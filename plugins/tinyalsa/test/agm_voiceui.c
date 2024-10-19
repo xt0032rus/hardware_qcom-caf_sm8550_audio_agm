@@ -407,11 +407,6 @@ void voice_ui_test(unsigned int card, unsigned int device, unsigned int audio_in
         goto err_close_pcm;
     }
 
-    pthread_create(&event_thread,
-                    (const pthread_attr_t *) NULL, event_wait_thread_loop, mixer);
-
-    record_lab_buffer(pcm, cap_time);
-
     /* Reset Engine */
     if (agm_mixer_set_param_with_file(mixer, device, STREAM_PCM, "/vendor/etc/engine_reset")) {
         printf("stream setup duration configuration failed\n");
